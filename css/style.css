@@ -1,0 +1,23 @@
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color:rgba(var(--bs-danger-rgb),var(--bs-text-opacity))!important;
+    transition: width 0.3s;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.align-right {
+    text-align: right;
+}   
