@@ -2,66 +2,53 @@
 <html lang="pt-br" data-bs-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sessões</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ingressos</title>
 
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link rel="stylesheet" href="../../icons/font/bootstrap-icons.css">
   <link rel="stylesheet" href="/css/style.css">
-  <script type="module" src="/controller/sessaoController.js" defer></script>
+  <script type="module" src="/controller/ingressoController.js" defer></script>
 </head>
 <body>
   <div id="menu"></div>
 
   <div class="container mt-4">
-    <h1>Sessões</h1>
+    <h1>Ingressos</h1>
     <div class="mb-3" style="text-align: right;">
-      <button id="btnNovaSessao" class="btn btn-success">Nova Sessão</button>
+      <button id="btnNovoIngresso" class="btn btn-success">Novo Ingresso</button>
     </div>
 
-    <div id="sessoes-container" class="row g-4"></div>
+    <div id="ingressos-container" class="row g-4"></div>
   </div>
 
-  <!-- Modal: Cadastrar/Editar Sessão -->
-  <div class="modal fade" id="modalSessao" tabindex="-1" aria-labelledby="modalSessaoTitulo" aria-hidden="true">
+  <!-- Modal: Cadastro/Edição -->
+  <div class="modal fade" id="modalIngresso" tabindex="-1" aria-labelledby="modalIngressoTitulo" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header bg-dark text-white">
-          <h5 class="modal-title" id="modalSessaoTitulo">Cadastrar Sessão</h5>
+          <h5 class="modal-title" id="modalIngressoTitulo">Novo Ingresso</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
-          <form id="formSessao">
-            <select class="form-select mb-2" id="movie" required>
-              <option value="">Selecione o Filme</option>
+          <form id="formIngresso">
+            <select id="sessao" class="form-select mb-2" required>
+              <option value="">Selecione a Sessão</option>
             </select>
-            <select class="form-select mb-2" id="room" required>
-              <option value="">Selecione a Sala</option>
-            </select>
-            <input type="datetime-local" class="form-control mb-2" id="dateHour" required />
-            <input type="number" class="form-control mb-2" id="price" placeholder="Preço" required />
-            <select class="form-select mb-2" id="language" required>
-              <option value="">Idioma</option>
-              <option value="Dublado">Dublado</option>
-              <option value="Legendado">Legendado</option>
-            </select>
-            <select class="form-select mb-2" id="format" required>
-              <option value="">Formato</option>
-              <option value="2D">2D</option>
-              <option value="3D">3D</option>
-            </select>
+            <input type="text" id="cliente" class="form-control mb-2" placeholder="Nome do Cliente" required />
+            <input type="text" id="cpf" class="form-control mb-2" placeholder="CPF" required />
           </form>
         </div>
         <div class="modal-footer">
           <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button class="btn btn-primary" data-bs-dismiss="modal" id="btnSalvarSessao">Salvar</button>
+          <button class="btn btn-primary" data-bs-dismiss="modal" id="btnSalvarIngresso">Salvar</button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Modal: Excluir Sessão -->
-  <div class="modal fade" id="modalExcluirSessao" tabindex="-1" aria-hidden="true">
+  <!-- Modal: Excluir -->
+  <div class="modal fade" id="modalExcluirIngresso" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header bg-dark text-white">
@@ -69,7 +56,7 @@
           <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
-          <p>Deseja realmente excluir esta sessão?</p>
+          <p>Deseja realmente excluir este ingresso?</p>
         </div>
         <div class="modal-footer">
           <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
